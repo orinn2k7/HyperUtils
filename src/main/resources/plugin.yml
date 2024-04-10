@@ -1,0 +1,17 @@
+name: OCompressor
+version: '${project.version}'
+main: org.orinn.tuchetao.Main
+api-version: '1.20'
+commands:
+  compress:
+    description: test
+    usage: /compress
+    aliases: doiblock
+    permission: orinn.compress.use
+    permission-message: You don't has permission to use this command.
+  multiplier:
+    description: test
+    usage: /multiplier
+    aliases: multi
+    permission: orinn.admin
+    permission-message: You don't has permission to use this command.

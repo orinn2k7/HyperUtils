@@ -1,0 +1,16 @@
+
+default-multiplier: 1
+compressor:
+  coal:
+    permission: 'orinn.compress.use.coal'
+    requirement:
+      item-type: 'VANILLA'
+      type: '#'  # chỉ sử dụng cho MMOITEMS
+      id: 'DIAMOND'
+      amount: 64
+    new-item:
+      item-type: 'MMOITEMS'
+      type: 'MATERIAL'  # chỉ sử dụng cho MMOITEMS
+      id: 'RARE_DIAMOND'
+      amount: 1
+
