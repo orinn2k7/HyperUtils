@@ -48,7 +48,6 @@ public class CheTao {
 
             String permission = settings.getString("compressor." + NhapKhoangSan + ".permission");
 
-
             if (!player.hasPermission(permission)) {
                 player.sendMessage("Không có quyền");
                 return;
