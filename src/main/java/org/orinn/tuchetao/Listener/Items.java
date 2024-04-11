@@ -24,7 +24,7 @@ public class Items {
     }
 
 
-    public static class getMMOItem {
+    public static class getMMOItems {
         public static int getAmount(Player player, String type, String id) {
             int Amount = 0;
             MMOItem mmoItem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(type), id);
