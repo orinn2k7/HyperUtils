@@ -4,10 +4,12 @@ import net.Indyuce.mmoitems.MMOItems;
 import net.Indyuce.mmoitems.api.item.mmoitem.MMOItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class Items {
 
+    // Vanilla
     public static int getAmount(Player player, String id) {
         int Amount = 0;
         Material material = Material.getMaterial(id.toUpperCase());
@@ -23,7 +25,7 @@ public class Items {
         return Amount;
     }
 
-
+    // Mmoitems
     public static class getMMOItems {
         public static int getAmount(Player player, String type, String id) {
             int Amount = 0;
@@ -40,5 +42,30 @@ public class Items {
             return Amount;
         }
     }
+
+    // ItemsAdder Lười quá
+    public static class getItemsAdder {
+        public static int getAmount(Player player, String id) {
+            return 0;
+        }
+    }
+
+    public static boolean isInventoryEmpty(Player player) {
+        Inventory inv = player.getInventory();
+        for (int i = 0; i < 36; i++) {
+            if (inv.getItem(i) == null || inv.getItem(i).getType() == Material.AIR) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+//    public static void giveItems(Player player, ItemStack itemStack, int amount) {
+//        if (player.getInventory().addItem(itemStack).isEmpty()) {
+//            // Nếu không có vấn đề gì xảy ra, thoát phương thức
+//            return;
+//        }
+//    }
+
 
 }

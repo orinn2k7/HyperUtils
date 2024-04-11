@@ -15,3 +15,8 @@ commands:
     aliases: multi
     permission: orinn.admin
     permission-message: You don't has permission to use this command.
+  test:
+    description: test
+    usage: /test
+    permission: orinn.admin
+    permission-message: You don't has permission to use this command.

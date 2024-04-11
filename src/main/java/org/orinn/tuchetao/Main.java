@@ -3,6 +3,7 @@ package org.orinn.tuchetao;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.orinn.tuchetao.Commands.CompressCommand;
 import org.orinn.tuchetao.Commands.SetMultiplier;
+import org.orinn.tuchetao.Commands.test;
 import org.orinn.tuchetao.FileManager.Data;
 import org.orinn.tuchetao.FileManager.Settings;
 
@@ -27,6 +28,7 @@ public final class Main extends JavaPlugin {
     public void loadCommand() {
         new CompressCommand(this);
         new SetMultiplier(this);
+        new test(this);
     }
 
     public static Main getInstance() {
