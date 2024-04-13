@@ -6,6 +6,7 @@ import org.orinn.tuchetao.Commands.SetMultiplier;
 import org.orinn.tuchetao.Commands.test;
 import org.orinn.tuchetao.FileManager.Data;
 import org.orinn.tuchetao.FileManager.Settings;
+import org.orinn.tuchetao.Hook.HyperHook;
 
 public final class Main extends JavaPlugin {
     private static Main instance;
@@ -14,6 +15,7 @@ public final class Main extends JavaPlugin {
         instance = this;
         this.loadFile();
         this.loadCommand();
+        this.loadHook();
     }
 
     @Override
@@ -29,6 +31,10 @@ public final class Main extends JavaPlugin {
         new CompressCommand(this);
         new SetMultiplier(this);
         new test(this);
+    }
+
+    public void loadHook() {
+        HyperHook.Hook();
     }
 
     public static Main getInstance() {

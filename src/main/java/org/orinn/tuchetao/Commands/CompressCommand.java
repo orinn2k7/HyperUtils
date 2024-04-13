@@ -11,17 +11,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.orinn.tuchetao.FileManager.Data;
 import org.orinn.tuchetao.FileManager.Settings;
-import org.orinn.tuchetao.Listener.CheTao;
 import org.orinn.tuchetao.Listener.Items;
 import org.orinn.tuchetao.Main;
 import org.orinn.tuchetao.Utils;
 
-import javax.swing.*;
-import java.io.File;
 import java.util.Objects;
 import java.util.Set;
 
@@ -92,7 +88,7 @@ public class CompressCommand implements CommandExecutor {
             int Amount = 0;
             if (RequireItemType.equalsIgnoreCase("vanilla")) {
                 RequireStack = new ItemStack(Material.valueOf(RequireId));
-                Amount = Items.getAmount(player, RequireId);
+                Amount = Items.getAmount(player, RequireStack);
             } else if (RequireItemType.equalsIgnoreCase("MMOITEMS")) {
                 String RequireType = settings.getString("compressor." + KhoangSan + ".requirement.type");
                 MMOItem mmoItem = MMOItems.plugin.getMMOItem(MMOItems.plugin.getTypes().get(RequireType), RequireId);
@@ -100,12 +96,12 @@ public class CompressCommand implements CommandExecutor {
                     return false;
                 }
                 RequireStack = mmoItem.newBuilder().build();
-                Amount = Items.getMMOItems.getAmount(player, RequireType, RequireId);
+                Amount = Items.getAmount(player, RequireStack);
             } else {
                 return false;
             }
 
-            // Check xem đủ ko, ko thì oook
+            // Check xem đủ ko, ko thì cook
             if (Amount < RequireAmount) {
                 player.sendMessage("Bạn phải có đủ " + RequireAmount);
                 return false;
