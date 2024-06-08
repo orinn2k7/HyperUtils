@@ -8,7 +8,7 @@ compressor:
       type: '#'  # chỉ sử dụng cho MMOITEMS
       id: 'DIAMOND'
       amount: 64
-    new-item:
+    production:
       item-type: 'MMOITEMS'
       type: 'MATERIAL'  # chỉ sử dụng cho MMOITEMS
       id: 'RARE_DIAMOND'

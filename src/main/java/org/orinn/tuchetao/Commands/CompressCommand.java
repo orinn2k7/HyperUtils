@@ -23,11 +23,8 @@ import java.util.Set;
 
 public class CompressCommand implements CommandExecutor {
 
-    private Main plugin;
-
     public CompressCommand(Main plugin) {
-        this.plugin = plugin;
-        plugin.getCommand("compress").setExecutor(this);
+        Objects.requireNonNull(plugin.getCommand("compress")).setExecutor(this);
     }
 
     @Override

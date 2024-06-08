@@ -1,12 +1,11 @@
 package org.orinn.tuchetao;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.orinn.tuchetao.Commands.Compress;
 import org.orinn.tuchetao.Commands.CompressCommand;
 import org.orinn.tuchetao.Commands.SetMultiplier;
 import org.orinn.tuchetao.Commands.test;
-import org.orinn.tuchetao.FileManager.Data;
-import org.orinn.tuchetao.FileManager.Settings;
-import org.orinn.tuchetao.Hook.HyperHook;
+import org.orinn.tuchetao.FileManager.*;
 
 public final class Main extends JavaPlugin {
     private static Main instance;
@@ -15,7 +14,6 @@ public final class Main extends JavaPlugin {
         instance = this;
         this.loadFile();
         this.loadCommand();
-        this.loadHook();
     }
 
     @Override
@@ -26,16 +24,15 @@ public final class Main extends JavaPlugin {
     public void loadFile() {
         Settings.loadSettings();
         Data.loadData();
+        Item.loadData();
     }
     public void loadCommand() {
         new CompressCommand(this);
+        new Compress(this);
         new SetMultiplier(this);
         new test(this);
     }
 
-    public void loadHook() {
-        HyperHook.Hook();
-    }
 
     public static Main getInstance() {
         return instance;

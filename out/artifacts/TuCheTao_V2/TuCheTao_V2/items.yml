@@ -1,0 +1,5 @@
+items:
+  coal:
+    permission: 'orinn.compress.use.coal'
+    requirement: 'VANNILA DIAMOND 64'
+    production: 'MMOITEMS MATERIAL RARE_DIAMOND 1'
