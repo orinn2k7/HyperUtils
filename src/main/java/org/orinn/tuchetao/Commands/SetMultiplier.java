@@ -9,8 +9,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.orinn.tuchetao.FileManager.Data;
-import org.orinn.tuchetao.FileManager.Settings;
+import org.orinn.tuchetao.files.Data;
+import org.orinn.tuchetao.files.Settings;
 import org.orinn.tuchetao.Main;
 import org.orinn.tuchetao.Utils;
 

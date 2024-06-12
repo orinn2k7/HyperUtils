@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import org.orinn.tuchetao.FileManager.*;
+import org.orinn.tuchetao.files.*;
 import org.orinn.tuchetao.Listener.Items;
 import org.orinn.tuchetao.Main;
 import org.orinn.tuchetao.Other.ItemObj;
@@ -47,7 +47,7 @@ public class Compress implements CommandExecutor {
         FileConfiguration itemsCfg = Item.getData();
 
         // Kiểm tra item hợp lệ
-        Set<String> compressList = Objects.requireNonNull(itemsCfg.getConfigurationSection("items")).getKeys(false);
+            Set<String> compressList = Objects.requireNonNull(itemsCfg.getConfigurationSection("items")).getKeys(false);
         if (!compressList.contains(itemId)) {
             sender.sendMessage(Utils.TranslateColorCodes("&cItem không hợp lệ"));
             return false;

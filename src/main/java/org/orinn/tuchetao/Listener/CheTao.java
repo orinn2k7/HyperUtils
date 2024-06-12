@@ -2,14 +2,13 @@ package org.orinn.tuchetao.Listener;
 
 import net.Indyuce.mmoitems.MMOItems;
 import net.Indyuce.mmoitems.api.item.mmoitem.MMOItem;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.orinn.tuchetao.FileManager.Data;
-import org.orinn.tuchetao.FileManager.Settings;
+import org.orinn.tuchetao.files.Data;
+import org.orinn.tuchetao.files.Settings;
 
 import java.util.Set;
 
