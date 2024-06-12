@@ -25,7 +25,7 @@ public class DropsList {
         for (String key : Objects.requireNonNull(config.getConfigurationSection("allow_blocks")).getKeys(false)) {
             String value = config.getString("allow_blocks." + key);
             if (value == null || dropsList.contains(value)) {
-                return;
+                continue;
             }
             dropsList.add(value);
         }

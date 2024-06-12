@@ -27,7 +27,7 @@ public class playerData {
     }
 
     public void addAmount(String material, int amount) {
-        if (amount < 0L && storage.get(material) + amount < 0L) {
+        if (amount < 0 && storage.get(material) + amount < 0) {
             storage.put(material, 0);
         } else {
             storage.put(material, storage.get(material) + amount);

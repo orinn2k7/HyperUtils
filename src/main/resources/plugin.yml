@@ -26,3 +26,6 @@ commands:
     usage: /test
     permission: orinn.admin
     permission-message: You don't has permission to use this command.
+  kho:
+    aliases:
+      - storage

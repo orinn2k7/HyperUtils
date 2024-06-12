@@ -22,9 +22,13 @@ public class DataStorage {
             yaml = YamlConfiguration.loadConfiguration(DataFile.getFile(playerName));
         }
 
-        for (String material : Objects.requireNonNull(yaml.getConfigurationSection("storage")).getKeys(false)) {
+        for (String material : DropsList.dropsList) {
+            if (!yaml.contains("storage." + material)) {
+                yaml.set("storage." + material, 0);
+            }
             data.setAmount(material, yaml.getInt("storage." + material));
         }
+
         DataManager.PLAYER_DATA.put(playerName, data);
     }
 
