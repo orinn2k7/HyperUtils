@@ -28,9 +28,9 @@ public class DataFile {
         return file;
     }
 
+
     private static void createDefaultFile(File file) {
         try {
-            if (!file.exists()) { // Kiểm tra xem file đã tồn tại hay chưa
                 boolean created = file.createNewFile();
                 if (created) {
                     logger.info("Created new file: " + file.getName());
@@ -38,10 +38,7 @@ public class DataFile {
                 } else {
                     logger.warning("File already exists: " + file.getName());
                 }
-            } else {
-                logger.info("File already exists: " + file.getName());
-                addDefaultData(file); // Thêm dữ liệu mặc định nếu file đã tồn tại
-            }
+
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Failed to create new file: " + file.getName(), e);
         }
@@ -59,8 +56,6 @@ public class DataFile {
             }
         }
 
-        // Giả sử dropsList được khai báo ở đâu đó trong plugin
-        // ...
         for (String material : DropsList.dropsList) {
             if (!yaml.contains("storage." + material)) {
                 yaml.set("storage." + material, 0);

@@ -9,11 +9,18 @@ public class FileManager {
     public static SimpleConfigurationManager getFileSetting() {
         return SimpleConfigurationManager.get();
     }
+    
+    private static final SimpleConfigurationManager XCONFIG = SimpleConfigurationManager.get();
+    
     public static FileConfiguration getConfig() {
-        return getFileSetting().get("storage.yml");
+        return XCONFIG.get("storage.yml");
     }
 
     public static void loadFiles() {
-        getFileSetting().build("",false, "storage.yml");
+        XCONFIG.build("",false, "storage.yml");
+    }
+
+    public static void reloadFiles() {
+        XCONFIG.reload("storage.yml");
     }
 }

@@ -2,7 +2,8 @@ package org.orinn.tuchetao.Listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.block.Block;
+import org.bukkit.block.Container;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -11,9 +12,11 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.orinn.tuchetao.Main;
 import org.orinn.tuchetao.Utils;
-import org.orinn.tuchetao.storage.*;
+import org.orinn.tuchetao.storage.DataManager;
+import org.orinn.tuchetao.storage.DropsList;
+import org.orinn.tuchetao.storage.playerData;
 
-import java.util.List;
+import java.util.*;
 
 public class BlockBreak implements Listener {
 
@@ -24,19 +27,35 @@ public class BlockBreak implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void onBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        Material block = event.getBlock().getType();
+        Block block = event.getBlock();
         playerData data = DataManager.PLAYER_DATA.get(player.getName());
+        Map<Material, Integer> map = new HashMap<>();
 
-        if (BlocksList.checkBlock(block)) {
-            event.setDropItems(false);
-            List<ItemStack> drops = (List<ItemStack>) event.getBlock().getDrops(player.getInventory().getItemInMainHand());
-
-            for (ItemStack item : drops) {
-                if (DropsList.checkDrop(item.getType())) {
-                    data.addAmount(item.getType().name(), item.getAmount());
-                    player.sendMessage(Utils.TranslateColorCodes("&eStorage &8|&c " + item.getType().name() + " &f: &a+" + item.getAmount()));
+        List<ItemStack> drops = new ArrayList<>(event.getBlock().getDrops(player.getInventory().getItemInMainHand()));
+        if (block.getState() instanceof Container) {
+            Container container = (Container) block.getState();
+            for (ItemStack item : container.getInventory().getContents()) {
+                if (item != null && item.getType() != Material.AIR) {
+                    drops.add(item);
                 }
             }
         }
+
+        for (ItemStack item : drops) {
+            if (DropsList.checkDrop(item.getType()) && Utils.isDefaultItem(item, item.getType())) {
+                map.merge(item.getType(), item.getAmount(), Integer::sum);
+            } else {
+                event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), item);
+            }
+        }
+
+        for (Map.Entry<Material, Integer> entry : map.entrySet()) {
+            Material material = entry.getKey();
+            int amount = entry.getValue();
+            data.addAmount(material.name(), amount);
+            player.sendMessage(Utils.TranslateColorCodes("&eStorage &8|&c " + material.name() + " &f: &a+" + amount));
+        }
+
+        event.setDropItems(false);
     }
 }

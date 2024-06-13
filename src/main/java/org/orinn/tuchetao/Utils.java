@@ -4,6 +4,8 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,5 +26,10 @@ public class Utils {
 
         // Deserialize the message with legacy color codes
         return SERIALIZER.deserialize(message);
+    }
+
+    public static boolean isDefaultItem(ItemStack itemStack, Material material) {
+        ItemStack defaultStack = new ItemStack(material);
+        return itemStack.isSimilar(defaultStack);
     }
 }
