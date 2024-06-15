@@ -1,2 +1,23 @@
 title: "&eStorage &8|&a %player_name%"
-size: 6
+size:
+fill_items:
+  display_name: "&f "
+  material: "gray_stained_glass_pane"
+  lore: []
+storage_items:
+  coal:
+    display_name: "&eStorage &8|&7 Than"
+    material: "COAL"
+    slot: 10
+    lore:
+      - "&7 "
+      - "&f#item_amount#/#max_storage# Items"
+      - "&7 "
+  iron:
+    display_name: "&eStorage &8|&f Sắt"
+    material: "COAL"
+    slot: 11
+    lore:
+      - "&7 "
+      - "&f#item_amount#/#max_storage# Items"
+      - "&7 "

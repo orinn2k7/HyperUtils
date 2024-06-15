@@ -2,12 +2,11 @@ name: HyperUtility
 version: '${project.version}'
 main: org.orinn.tuchetao.Main
 api-version: '1.20'
-depend: [PlaceholderAPI]
+depend: [PlaceholderAPI, NBTAPI]
 commands:
   compress:
     description: test
     usage: /compress
-
     aliases: doiblock
     permission: orinn.compress.use
     permission-message: You don't has permission to use this command.

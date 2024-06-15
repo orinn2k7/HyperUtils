@@ -18,6 +18,8 @@ import org.orinn.tuchetao.storage.playerData;
 
 import java.util.*;
 
+import static org.bukkit.GameMode.*;
+
 public class BlockBreak implements Listener {
 
     public BlockBreak(Main plugin) {
@@ -27,6 +29,10 @@ public class BlockBreak implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void onBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
+        if (player.getGameMode() == CREATIVE || player.getGameMode() == ADVENTURE) {
+            return;
+        }
+
         Block block = event.getBlock();
         playerData data = DataManager.PLAYER_DATA.get(player.getName());
         Map<Material, Integer> map = new HashMap<>();
