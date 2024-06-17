@@ -14,13 +14,13 @@ import java.util.UUID;
 public class GUIManager {
 
     private static final HashMap<Player, HashMap<UUID, InteractiveItem>> itemsMapper = new HashMap<>();
-    private static final List<FilledItem> decorateMapper = new ArrayList<>();
+    private static final HashMap<Player, List<FilledItem>> decorateMapper = new HashMap<>();
 
     public static HashMap<Player, HashMap<UUID, InteractiveItem>> getItemsMapper() {
         return itemsMapper;
     }
 
-    public static List<FilledItem> getDecorateMapper() {
+    public static HashMap<Player, List<FilledItem>> getDecorateMapper() {
         return decorateMapper;
     }
 

@@ -1,9 +1,12 @@
 title: "&eStorage &8|&a %player_name%"
-size:
-fill_items:
+size: 6
+decorate_items:
   display_name: "&f "
   material: "gray_stained_glass_pane"
   lore: []
+  slots:
+    - 0-8
+    - 45-53
 storage_items:
   coal:
     display_name: "&eStorage &8|&7 Than"
